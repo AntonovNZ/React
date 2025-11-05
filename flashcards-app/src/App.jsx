@@ -8,19 +8,23 @@ export function App() {
 
 
   const addCard = () => {
-    
+
   }
   // can do this later
   useEffect(() =>
-    setSavedText(savedText.push(text))
+    setSavedText(prevText => [...prevText, newText])
   ), [text]
 
-  const onChangeTextArea = (event) => setText((event) => event.target.value)
+  useEffect(() => 
+    setText(savedText)
+  ), []
+
+  const onChangeTextArea = (event) => setText(event.target.value)
 
   return (
     <>
       <input type="text" value={text} onChange={onChangeTextArea}></input>
-      <button onClick={addCard}>
+      <button onClick={addCard}>create a new card
       </button>
     </>
   )
